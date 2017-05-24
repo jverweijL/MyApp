@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:liferay = "http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/contactformbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/loginbutton"
+        android:text="Contact"
+        android:layout_alignParentEnd="true"
+        android:onClick="showContactFormActivity"
+        />
+
+    <Button
+        android:id="@+id/formbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/contactformbutton"
+        android:text="Melding openbare ruimte"
+        android:layout_alignParentEnd="true"
+        android:onClick="showFormActivity"
+        />
+
+    <com.liferay.mobile.screens.webcontent.list.WebContentListScreenlet
+        android:id="@+id/latestnewslist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/formbutton"
+        android:layout_alignParentEnd="true"
+        liferay:autoLoad="true"
+        liferay:folderId="35227"
+        liferay:labelFields="Title,Intro"
+        liferay:pageSize="10" />
+
+
+</RelativeLayout>

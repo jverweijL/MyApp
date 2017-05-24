@@ -3,6 +3,7 @@ package com.example.jan.myapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.liferay.mobile.screens.auth.login.LoginListener;
@@ -15,6 +16,9 @@ public class Login extends AppCompatActivity implements LoginListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ((EditText) findViewById(R.id.liferay_login)).setText("burger@overheid360.nl");
+        ((EditText) findViewById(R.id.liferay_password)).setText("liferay");
 
         LoginScreenlet loginScreenlet = (LoginScreenlet) findViewById(R.id.login);
         loginScreenlet.setListener(this);

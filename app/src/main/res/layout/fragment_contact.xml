@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactFragment"
+    xmlns:liferay = "http://schemas.android.com/apk/res-auto">
+    
+    <com.liferay.mobile.screens.ddl.form.DDLFormScreenlet
+        android:id="@+id/contactform"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        liferay:layoutId="@layout/ddl_form_default"
+        liferay:recordSetId="57149"
+        liferay:structureId="57145">
+    </com.liferay.mobile.screens.ddl.form.DDLFormScreenlet>
+
+</FrameLayout>
