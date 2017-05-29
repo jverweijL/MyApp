@@ -10,8 +10,8 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         liferay:layoutId="@layout/ddl_form_default"
-        liferay:recordSetId="57149"
-        liferay:structureId="57145">
+        liferay:recordSetId="57162"
+        liferay:structureId="57158">
     </com.liferay.mobile.screens.ddl.form.DDLFormScreenlet>
 
 </FrameLayout>
