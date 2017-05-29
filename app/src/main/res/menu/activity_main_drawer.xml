@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_contact"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Contact" />
-        <item
-            android:id="@+id/nav_melding"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Melding" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -20,7 +13,43 @@
             android:title="Tools" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Burger">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Contact" />
+            <item
+                android:id="@+id/nav_melding"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Melding" />
+        </menu>
+    </item>
+    <item android:title="Gemeente">
+        <menu>
+            <item
+                android:id="@+id/nav_shareg"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_sendg"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+    <item android:title="Waterschap">
+        <menu>
+            <item
+                android:id="@+id/nav_sharew"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_sendw"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+    <item android:title="Rijksoverheid">
         <menu>
             <item
                 android:id="@+id/nav_share"

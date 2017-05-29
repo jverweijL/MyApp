@@ -1,10 +1,12 @@
 package com.example.jan.myapp;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.LayoutInflaterCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,10 +18,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ContactFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,ContactFragment.OnFragmentInteractionListener,ReportFragment.OnFragmentInteractionListener {
 
     public FragmentTransaction ft;
+    private MenuItem menuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Menu menuNav = navigationView.getMenu();
+
+        // set icons using fontawesome...
+        menuItem = (MenuItem) menuNav.findItem(R.id.nav_contact);
+        if (menuItem != null) {
+            menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_comments));
+        }
+        menuItem = (MenuItem) menuNav.findItem(R.id.nav_melding);
+        if (menuItem != null) {
+            menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_exclamation_triangle));
+        }
+
     }
 
     @Override
@@ -95,6 +114,10 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         } else if (id == R.id.nav_melding) {
             Toast.makeText(this,"melding",Toast.LENGTH_SHORT).show();
+            ReportFragment fragment = new ReportFragment();
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
