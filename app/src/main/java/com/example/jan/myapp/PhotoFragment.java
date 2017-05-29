@@ -7,27 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.liferay.mobile.screens.ddl.form.DDLFormListener;
-import com.liferay.mobile.screens.ddl.form.DDLFormScreenlet;
-import com.liferay.mobile.screens.ddl.model.DocumentField;
-import com.liferay.mobile.screens.ddl.model.Record;
-
-import org.json.JSONObject;
-
-import java.util.Map;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ReportFragment.OnFragmentInteractionListener} interface
+ * {@link PhotoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ReportFragment#newInstance} factory method to
+ * Use the {@link PhotoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ReportFragment extends Fragment implements DDLFormListener {
+public class PhotoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,7 +29,7 @@ public class ReportFragment extends Fragment implements DDLFormListener {
 
     private OnFragmentInteractionListener mListener;
 
-    public ReportFragment() {
+    public PhotoFragment() {
         // Required empty public constructor
     }
 
@@ -49,11 +39,11 @@ public class ReportFragment extends Fragment implements DDLFormListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ReportFragment.
+     * @return A new instance of fragment PhotoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ReportFragment newInstance(String param1, String param2) {
-        ReportFragment fragment = new ReportFragment();
+    public static PhotoFragment newInstance(String param1, String param2) {
+        PhotoFragment fragment = new PhotoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,11 +64,7 @@ public class ReportFragment extends Fragment implements DDLFormListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_report, container, false);
-        DDLFormScreenlet form = (DDLFormScreenlet) view.findViewById(R.id.reportform);
-        form.setListener(this);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_photo, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,51 +91,6 @@ public class ReportFragment extends Fragment implements DDLFormListener {
         mListener = null;
     }
 
-    @Override
-    public void onDDLFormLoaded(Record record) {
-
-    }
-
-    @Override
-    public void onDDLFormRecordLoaded(Record record, Map<String, Object> valuesAndAttributes) {
-
-    }
-
-    @Override
-    public void onDDLFormRecordAdded(Record record) {
-        Toast.makeText(getActivity(),"Let's take a picture!",Toast.LENGTH_SHORT).show();
-
-        //((MainActivity) getActivity()).goHome();
-
-
-        //FragmentTransaction ft = getFragmentManager().beginTransaction();
-        //MainFragment mainfragment = new MainFragment();
-        //ft.replace(R.id.fragment_container,mainfragment);
-
-        //ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        //ft.commit();
-    }
-
-    @Override
-    public void onDDLFormRecordUpdated(Record record) {
-
-    }
-
-    @Override
-    public void onDDLFormDocumentUploaded(DocumentField documentField, JSONObject jsonObject) {
-
-    }
-
-    @Override
-    public void onDDLFormDocumentUploadFailed(DocumentField documentField, Exception e) {
-
-    }
-
-    @Override
-    public void error(Exception e, String userAction) {
-
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -164,4 +105,6 @@ public class ReportFragment extends Fragment implements DDLFormListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

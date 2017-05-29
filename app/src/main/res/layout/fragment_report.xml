@@ -6,7 +6,7 @@
     xmlns:liferay = "http://schemas.android.com/apk/res-auto">
 
     <com.liferay.mobile.screens.ddl.form.DDLFormScreenlet
-        android:id="@+id/contactform"
+        android:id="@+id/reportform"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         liferay:layoutId="@layout/ddl_form_default"
