@@ -1,2 +1,2 @@
 # Overheid360
-first steps on the move with Liferay Screens
+This app will show some use-cases for the Dutch government on several levels.
