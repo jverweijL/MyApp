@@ -3,8 +3,10 @@ package com.example.jan.myapp;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.view.View;
@@ -21,8 +23,13 @@ import android.widget.Toast;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ContactFragment.OnFragmentInteractionListener,ReportFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+                                                                ContactFragment.OnFragmentInteractionListener,
+                                                                ReportFragment.OnFragmentInteractionListener,
+                                                                HomeFragment.OnFragmentInteractionListener,
+                                                                EmergencyFragment.OnFragmentInteractionListener,
+                                                                MeldingenFragment.OnFragmentInteractionListener,
+                                                                ShareFragment.OnFragmentInteractionListener {
 
     public FragmentTransaction ft;
     private MenuItem menuItem;
@@ -31,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,6 +63,10 @@ public class MainActivity extends AppCompatActivity
         Menu menuNav = navigationView.getMenu();
 
         // set icons using fontawesome...
+        menuItem = (MenuItem) menuNav.findItem(R.id.nav_home);
+        if (menuItem != null) {
+            menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_home));
+        }
         menuItem = (MenuItem) menuNav.findItem(R.id.nav_contact);
         if (menuItem != null) {
             menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_comments));
@@ -63,7 +75,27 @@ public class MainActivity extends AppCompatActivity
         if (menuItem != null) {
             menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_exclamation_triangle));
         }
+        menuItem = (MenuItem) menuNav.findItem(R.id.nav_w_spoed);
+        if (menuItem != null) {
+            menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_exclamation_triangle));
+        }
+        menuItem = (MenuItem) menuNav.findItem(R.id.nav_w_vergunning);
+        if (menuItem != null) {
+            menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_check));
+        }
+        menuItem = (MenuItem) menuNav.findItem(R.id.nav_w_meldingen);
+        if (menuItem != null) {
+            menuItem.setIcon(new IconicsDrawable(this).icon(FontAwesome.Icon.faw_bell));
+        }
 
+        if (savedInstanceState == null) {
+            ft = getSupportFragmentManager().beginTransaction();
+            HomeFragment fragment = new HomeFragment();
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+            //menuNav.findItem(R.id.nav_home).setChecked(true);
+        }
     }
 
     @Override
@@ -107,21 +139,41 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_contact) {
             // Handle the contact action
-            Toast.makeText(this,"contact",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"contact",Toast.LENGTH_SHORT).show();
             ContactFragment fragment = new ContactFragment();
             ft.replace(R.id.fragment_container,fragment);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             ft.commit();
         } else if (id == R.id.nav_melding) {
-            Toast.makeText(this,"melding",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"melding",Toast.LENGTH_SHORT).show();
             ReportFragment fragment = new ReportFragment();
             ft.replace(R.id.fragment_container,fragment);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             ft.commit();
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_home) {
+            //Toast.makeText(this,"home",Toast.LENGTH_SHORT).show();
+            HomeFragment fragment = new HomeFragment();
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+        } else if (id == R.id.nav_w_spoed) {
+            //Toast.makeText(this,"spoed",Toast.LENGTH_SHORT).show();
+            EmergencyFragment fragment = new EmergencyFragment();
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+        } else if (id == R.id.nav_w_meldingen) {
+            //Toast.makeText(this,"melding",Toast.LENGTH_SHORT).show();
+            MeldingenFragment fragment = new MeldingenFragment();
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+        } else if (id == R.id.nav_w_share) {
+            Toast.makeText(this,"melding",Toast.LENGTH_SHORT).show();
+            ShareFragment fragment = new ShareFragment();
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -130,6 +182,9 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+        item.setChecked(true);
+
         return true;
     }
 

@@ -4,6 +4,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Slideshow" />
@@ -37,16 +41,30 @@
                 android:title="Send" />
         </menu>
     </item>
-    <item android:title="Waterschap">
+    <!-- waterschap -->
+    <item android:title="Hoogheemraadschap van Rijnland">
         <menu>
             <item
-                android:id="@+id/nav_sharew"
+                android:id="@+id/nav_w_spoed"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Spoedeisende melding" />
             <item
-                android:id="@+id/nav_sendw"
+                android:id="@+id/nav_w_meldingen"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Meldingen" />
+            <!-- http://rijnland.vergunningen.info/check -->
+            <item
+                android:id="@+id/nav_w_vergunning"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Vergunningenchecker" />
+            <item
+                android:id="@+id/nav_w_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Delen" />
+            <item
+                android:id="@+id/nav_w_contact"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Contact" />
         </menu>
     </item>
     <item android:title="Provincie">
