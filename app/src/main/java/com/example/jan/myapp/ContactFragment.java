@@ -7,6 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.liferay.mobile.screens.ddl.form.DDLFormListener;
+import com.liferay.mobile.screens.ddl.form.DDLFormScreenlet;
+import com.liferay.mobile.screens.ddl.model.DocumentField;
+import com.liferay.mobile.screens.ddl.model.Record;
+
+import org.json.JSONObject;
+
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +26,7 @@ import android.view.ViewGroup;
  * Use the {@link ContactFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ContactFragment extends Fragment {
+public class ContactFragment extends Fragment implements DDLFormListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,8 +73,15 @@ public class ContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
+
+        //TODO we can make this more flexible by setting recordsetid and structureid programmatically
+        DDLFormScreenlet form = (DDLFormScreenlet) view.findViewById(R.id.contactform);
+        form.setListener(this);
+
+        return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -88,6 +105,41 @@ public class ContactFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDDLFormLoaded(Record record) {
+
+    }
+
+    @Override
+    public void onDDLFormRecordLoaded(Record record, Map<String, Object> valuesAndAttributes) {
+
+    }
+
+    @Override
+    public void onDDLFormRecordAdded(Record record) {
+        Toast.makeText(getActivity(),"Informatie ontvangen!",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDDLFormRecordUpdated(Record record) {
+
+    }
+
+    @Override
+    public void onDDLFormDocumentUploaded(DocumentField documentField, JSONObject jsonObject) {
+
+    }
+
+    @Override
+    public void onDDLFormDocumentUploadFailed(DocumentField documentField, Exception e) {
+
+    }
+
+    @Override
+    public void error(Exception e, String userAction) {
+
     }
 
     /**

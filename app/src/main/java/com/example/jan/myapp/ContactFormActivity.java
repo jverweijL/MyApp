@@ -2,6 +2,9 @@ package com.example.jan.myapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.liferay.mobile.screens.ddl.form.DDLFormListener;
@@ -23,6 +26,8 @@ public class ContactFormActivity extends AppCompatActivity implements DDLFormLis
         DDLFormScreenlet contactform = (DDLFormScreenlet) findViewById(R.id.contactform);
         contactform.setListener(this);
     }
+
+
 
     @Override
     public void onDDLFormLoaded(Record record) {

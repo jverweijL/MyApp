@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         ft = getSupportFragmentManager().beginTransaction();
 
-        if (id == R.id.nav_contact) {
+        if (id == R.id.nav_w_contact) {
             // Handle the contact action
             //Toast.makeText(this,"contact",Toast.LENGTH_SHORT).show();
             ContactFragment fragment = new ContactFragment();
